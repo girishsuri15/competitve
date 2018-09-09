@@ -1,0 +1,108 @@
+/* IMPORTANT: Multiple classes and nested static classes are supported */
+
+/*
+ * uncomment this if you want to read input.
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+*/
+//import for Scanner and other utility classes
+import java.util.*;
+
+class Circle
+{
+    Node index;
+    Node rear;
+   
+    Circle()
+    {
+        index=null;
+        rear=null;
+    }
+    class Node
+    {
+         Node left;
+        int value;
+        Node right;
+        
+        Node(int value)
+        {
+            this.value=value;
+            this.left=index;
+            this.right=rear;
+        }
+    }
+    
+    void insert(int v)
+    {
+        Node n=new Node(v);
+        if(index==null)
+        {
+            this.index=n;
+        }
+        else
+        {
+            this.rear.left=n;
+            this.First.right=n;
+        }
+    this.rear=n;
+    }
+    void leftShift(int LeftShifts)
+    {
+     int i=0;
+        while(i<LeftShifts)
+        {
+            this.index=this.index.right;
+            i++;
+        }   
+    }
+    void rightShift(int RightShifts)
+    {
+        int i=0;
+        while(i<RightShifts)
+        {
+            this.index=this.index.left;
+            i++;
+        }
+    }
+   void  plateNumber(int plate)
+     {
+         Node temp = this.index;
+        int i=0;
+        
+        while(i<plate)
+        {
+            temp=temp.left;
+            i++;
+        }
+        System.out.println(temp.value);
+     }
+}
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+     
+        Scanner s = new Scanner(System.in);
+        int testCase = s.nextInt();
+        int n=0,value=0,task=0,queries=0;// Reading input from STDIN
+        for(int i=0;i<testCase;i++)
+        {
+             n = s.nextInt();
+             Circle newCircle=new Circle();
+             for(int j=0;j<n;j++)
+             {
+                value = s.nextInt();
+                newCircle.insert(value);
+             }   
+             queries = s.nextInt();
+             for(int j=0;j<queries;j++)
+             {
+                task = s.nextInt();
+                 value = s.nextInt();
+                if(task==1){newCircle.rightShift(value);}
+                else if(task==2){newCircle.leftShift(value);}
+                else{newCircle.plateNumber(value);}
+             }   
+        }
+    }
+}
+
