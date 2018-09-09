@@ -1,0 +1,2 @@
+# competitve
+competitive prgramming ques
